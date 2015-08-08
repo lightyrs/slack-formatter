@@ -1,22 +1,7 @@
 = simple_form_for :message do |f|
   = f.input :username
   = f.input :text, as: :text
-  = f.simple_fields_for :attachment do |a|
-    = a.input :fallback
-    / Add default color options ('good', 'warning', 'danger') with preview
-    = a.input :color, as: :minicolors, input_html: { data: { minicolors: {theme: :bootstrap, position: :left } } }
-    = a.input :pretext
-    = a.simple_fields_for :author do |author|
-      = author.input :author_name
-      = author.input :author_link, as: :url
-      = author.input :author_icon, as: :url
-    = a.input :title
-    = a.input :title_link, as: :url
-    = a.input :text, as: :text
-    = a.simple_fields_for :field do |field|
-      = field.input :title
-      = field.input :value
-      = field.input :short, as: :boolean
-    = a.input :image_url, as: :url
-    = a.input :thumb_url, as: :url
+  .attachments
+    = f.simple_fields_for :attachment do |attachment|
+      = render 'slack/attachment_fields', f: attachment
   = f.submit
