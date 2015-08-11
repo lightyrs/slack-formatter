@@ -1,4 +1,8 @@
-.nested-fields
+.nested-fields.attachment-field
+  %legend
+    %button.btn.btn-default.btn-xs.add-fieldset{"aria-label" => "Add Attachment Field", :type => "button"}
+      %span.glyphicon.glyphicon-plus{"aria-hidden" => "true"}
+    Attachment Field
   = f.input :title
   = f.input :value
   = f.input :short, as: :boolean

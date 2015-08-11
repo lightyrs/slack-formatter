@@ -1,7 +1,10 @@
 = simple_form_for @message do |f|
+  %legend Message
   = f.input :username
   = f.input :text, as: :text
-  .attachments
-    = f.simple_fields_for :attachment do |attachment|
-      = render 'slack/attachment_fields', f: attachment
-  = f.submit
+  .attachments.row
+    .col-xs-11.col-xs-offset-1
+      = f.simple_fields_for :attachment do |attachment|
+        = render 'slack/attachment_fields', f: attachment
+  .center-block.text-center.buttons
+    = f.button :submit, class: 'btn-primary btn-lg'
